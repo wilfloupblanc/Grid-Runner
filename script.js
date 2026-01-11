@@ -13,6 +13,27 @@ let score = 0;
 let gameOver =false
 let gridElements = [];
 let bestScore = localStorage.getItem("gridRunnerBestScore") || 0;
+let lastTouchY = 0;
+let preventPullToRefresh = false;
+
+document.addEventListener('touchstart', (e) => {
+    if (e.touches.length !== 1) return;
+    lastTouchY = e.touches[0].clientY;
+    preventPullToRefresh = window.pageYOffset === 0;
+}, { passive: false });
+
+document.addEventListener('touchmove', (e) => {
+    const touchY = e.touches[0].clientY;
+    const touchYDelta = touchY - lastTouchY;
+    lastTouchY = touchY;
+
+    if (preventPullToRefresh) {
+        if (touchYDelta > 0) {
+            e.preventDefault();
+            return;
+        }
+    }
+}, { passive: false });
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
