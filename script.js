@@ -13,24 +13,21 @@ let score = 0;
 let gameOver =false
 let gridElements = [];
 let bestScore = localStorage.getItem("gridRunnerBestScore") || 0;
-let lastTouchY = 0;
-let preventPullToRefresh = false;
+let touchStartY = 0;
 
 document.addEventListener('touchstart', (e) => {
-    if (e.touches.length !== 1) return;
-    lastTouchY = e.touches[0].clientY;
-    preventPullToRefresh = window.pageYOffset === 0;
+    touchStartY = e.touches[0].clientY;
 }, { passive: false });
 
 document.addEventListener('touchmove', (e) => {
     const touchY = e.touches[0].clientY;
-    const touchYDelta = touchY - lastTouchY;
-    lastTouchY = touchY;
+    const touchYDelta = touchY - touchStartY;
 
-    if (preventPullToRefresh) {
-        if (touchYDelta > 0) {
+    const isInsideModal = e.target.closest('.modal-content');
+
+    if (!isInsideModal && touchYDelta > 0 && window.scrollY === 0) {
+        if (e.cancelable) {
             e.preventDefault();
-            return;
         }
     }
 }, { passive: false });
