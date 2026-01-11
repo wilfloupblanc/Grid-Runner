@@ -45,7 +45,6 @@ body .tutorial-modal .tutorial-section p strong {
   color: #7B3FF2;
 }
 body .victory-modal {
-  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -54,6 +53,7 @@ body .victory-modal {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: fixed;
   z-index: 1000;
 }
 body .modal-content {
@@ -394,7 +394,7 @@ main .game-container {
   border-radius: 2rem;
   padding: 3rem;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  max-height: 90vh;
+  height: 50vh;
   overflow-y: auto;
 }
 main .game-container h3 {

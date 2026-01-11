@@ -13,24 +13,21 @@ let score = 0;
 let gameOver =false
 let gridElements = [];
 let bestScore = localStorage.getItem("gridRunnerBestScore") || 0;
-let touchStartY = 0;
-
-document.addEventListener('touchstart', (e) => {
-    touchStartY = e.touches[0].clientY;
-}, { passive: false });
 
 document.addEventListener('touchmove', (e) => {
-    const touchY = e.touches[0].clientY;
-    const touchYDelta = touchY - touchStartY;
-
-    const isInsideModal = e.target.closest('.modal-content');
-
-    if (!isInsideModal && touchYDelta > 0 && window.scrollY === 0) {
-        if (e.cancelable) {
-            e.preventDefault();
-        }
-    }
+    e.preventDefault();
 }, { passive: false });
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const gameBoard = document.getElementById('game-board');
+
+    if (gameBoard) {
+        gameBoard.addEventListener('touchmove', (e) => {
+            e.stopPropagation();
+        }, { passive: true });
+    }
+});
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
