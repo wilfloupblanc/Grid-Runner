@@ -7,8 +7,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Grid Runner</title>
 
-    <link rel="icon" href="./images/gridrunner.png" type="image/x-icon">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#1E3A8A">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Grid Runner">
+    <link rel="apple-touch-icon" href="./images/gridrunner.png">
 
+    <link rel="icon" href="./images/gridrunner.png" type="image/x-icon">
     <link rel="stylesheet" href="./assets/styles/index.css">
 </head>
 <body>
@@ -29,5 +35,12 @@
 </main>
 <script src="./grid.js"></script>
 <script type="module" src="./script.js"></script>
+<script>
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js')
+            .then(() => console.log('Service Worker enregistré'))
+            .catch(err => console.log('Erreur SW:', err));
+    }
+</script>
 </body>
 </html>
