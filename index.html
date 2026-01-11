@@ -1,23 +1,33 @@
 <!doctype html>
-<html lang=fr>
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Grid Runner</title>
 
-    <link rel="stylesheet" href="./style.css">
+    <link rel="icon" href="./images/gridrunner.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="./assets/styles/index.css">
 </head>
 <body>
 
 <main>
+    <a href=""><h1>Grid Runner</h1></a>
 
-    <div id="game-board"></div>
-    <div id="score">Score : 0</div>
-
+    <div class="start">
+        <form action="">
+            <h2>User</h2>
+            <label for="name">
+                <input type="text" name="name" id="name" placeholder="Entrez votre nom">
+            </label>
+            <p class="error-message"></p>
+            <input type="submit" id="start-button" value="Start Game">
+        </form>
+    </div>
 </main>
-
+<script src="./grid.js"></script>
 <script type="module" src="./script.js"></script>
 </body>
 </html>

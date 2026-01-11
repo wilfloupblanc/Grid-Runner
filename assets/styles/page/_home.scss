@@ -1,0 +1,203 @@
+@use "../main/global" as *;
+@use "../main/mixins" as *;
+@use "../main/normalize" as *;
+@use "../main/variables" as *;
+
+main {
+    a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        font-size: 3rem;
+    }
+
+    .start {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
+
+        form {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(1rem);
+            padding: 4rem;
+            border-radius: 2rem;
+            text-align: center;
+            color: white;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            min-width: 30rem;
+
+            h2 {
+                font-size: 3rem;
+                margin-bottom: 2rem;
+            }
+
+            label {
+                display: block;
+                margin-bottom: 2rem;
+
+                input[type="text"] {
+                    width: 100%;
+                    padding: 1.2rem;
+                    font-size: 1.6rem;
+                    border: 2px solid rgba(255, 255, 255, 0.3);
+                    border-radius: 1rem;
+                    background: rgba(255, 255, 255, 0.1);
+                    color: white;
+                    outline: none;
+                    transition: all 0.3s;
+
+                    &::placeholder {
+                        color: rgba(255, 255, 255, 0.6);
+                    }
+
+                    &:focus {
+                        border-color: #7B3FF2;
+                        background: rgba(255, 255, 255, 0.15);
+                    }
+                }
+            }
+
+            input[type="submit"] {
+                padding: 1.2rem 3rem;
+                font-size: 1.6rem;
+                background: #7B3FF2;
+                color: white;
+                border: none;
+                border-radius: 1rem;
+                cursor: pointer;
+                transition: background 0.3s;
+
+                &:hover {
+                    background: #6D28D9;
+                }
+            }
+
+            .error-message {
+                display: none; // Caché par défaut
+                color: #FF6B6B;
+                font-size: 1.4rem;
+                margin-top: 1rem;
+                margin-bottom: 1rem;
+                padding: 1rem;
+                background: rgba(255, 107, 107, 0.1);
+                border-radius: 0.5rem;
+                border: 1px solid rgba(255, 107, 107, 0.3);
+            }
+
+            input[type="text"].shake {
+                animation: shake 0.5s;
+            }
+        }
+    }
+
+    @keyframes shake {
+        0%, 100% { transform: translateX(0); }
+        10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+        20%, 40%, 60%, 80% { transform: translateX(5px); }
+    }
+
+    .game-container {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 2rem;
+        padding: 3rem;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+
+        h3 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            margin-top: 0;
+        }
+
+        #level-display {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+        }
+
+        #game-board {
+            display: grid;
+            grid-template-columns: repeat(5, 6rem);
+            align-items: center;
+            justify-content: center;
+            gap: 0.2rem;
+        }
+
+        #score {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 1rem;
+            font-size: 3rem;
+            color: white;
+        }
+
+        .cell {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 5rem;
+            width: 6rem;
+            height: 6rem;
+            border: 2px solid rgba(100, 150, 255, 0.3);
+            border-radius: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .empty {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .star {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .star-icon {
+            display: inline-block;
+            animation: rotate 3s linear infinite;
+        }
+
+        .wall {
+            background: url(../../images/mur.jpeg) no-repeat; background-size: cover;
+        }
+
+        .legend {
+            margin-top: 2rem;
+            text-align: left;
+            color: white;
+
+            .legend-content {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 1rem;
+            }
+
+            h2 {
+                margin-bottom: 1rem;
+            }
+
+            p {
+                margin: 0.5rem 0;
+            }
+        }
+
+    }
+}
