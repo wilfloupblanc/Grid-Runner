@@ -2,7 +2,7 @@
   "name": "Grid Runner",
   "short_name": "GridRunner",
   "description": "Un jeu de labyrinthe avec 30 niveaux",
-  "start_url": "/",
+  "start_url": "./",
   "display": "standalone",
   "background_color": "#7B3FF2",
   "theme_color": "#1E3A8A",

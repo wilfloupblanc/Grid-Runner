@@ -1,12 +1,12 @@
 const CACHE_NAME = 'grid-runner-v1';
 const urlsToCache = [
-    '/',
-    '/index.html',
-    '/assets/styles/index.css',
-    '/script.js',
-    '/grid.js',
-    '/images/gridrunner.png',
-    '/images/mur.jpeg'
+    './',
+    './index.html',
+    './assets/styles/index.css',
+    './script.js',
+    './grid.js',
+    './images/gridrunner.png',
+    './images/mur.jpeg'
 ];
 
 // Installation
