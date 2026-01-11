@@ -14,21 +14,6 @@ let gameOver =false
 let gridElements = [];
 let bestScore = localStorage.getItem("gridRunnerBestScore") || 0;
 
-document.addEventListener('touchmove', (e) => {
-    e.preventDefault();
-}, { passive: false });
-
-
-document.addEventListener('DOMContentLoaded', () => {
-    const gameBoard = document.getElementById('game-board');
-
-    if (gameBoard) {
-        gameBoard.addEventListener('touchmove', (e) => {
-            e.stopPropagation();
-        }, { passive: true });
-    }
-});
-
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     const inputName = document.querySelector("input[type='text']");
@@ -70,8 +55,8 @@ function showTutorialModal(callback) {
             
             <div class="tutorial-section">
                 <h3>🎮 Contrôles</h3>
-                <p><strong>Sur ordinateur :</strong> Utilisez les flèches du clavier ⬆️ ⬇️ ⬅️ ➡️</p>
-                <p><strong>Sur mobile :</strong> Glissez (swipe) dans la direction souhaitée</p>
+                <p><strong>Sur ordinateur :</strong> Flèches du clavier ⬆️ ⬇️ ⬅️ ➡️</p>
+                <p><strong>Sur mobile :</strong> Utilisez les boutons directionnels ou swipez sur la grille</p>
             </div>
             
             <div class="tutorial-section">
@@ -185,6 +170,22 @@ function createGameContainer() {
     `;
 
     main.appendChild(gameContainer);
+
+    createMobileControls();
+}
+
+function createMobileControls() {
+    const controls = document.createElement('div');
+    controls.classList.add('mobile-controls');
+    controls.innerHTML = `
+        <button class="control-btn up" id="btn-up">⬆️</button>
+        <div class="horizontal-controls">
+            <button class="control-btn left" id="btn-left">⬅️</button>
+            <button class="control-btn down" id="btn-down">⬇️</button>
+            <button class="control-btn right" id="btn-right">➡️</button>
+        </div>
+    `;
+    document.body.appendChild(controls);
 }
 
 function displayGrid() {
@@ -392,16 +393,30 @@ document.addEventListener("keyup", event => {
     }
 });
 
+
 function addTouchControls() {
+    const btnUp = document.getElementById('btn-up');
+    const btnDown = document.getElementById('btn-down');
+    const btnLeft = document.getElementById('btn-left');
+    const btnRight = document.getElementById('btn-right');
+
+    if (btnUp) btnUp.addEventListener('click', () => movePlayer('up'));
+    if (btnDown) btnDown.addEventListener('click', () => movePlayer('down'));
+    if (btnLeft) btnLeft.addEventListener('click', () => movePlayer('left'));
+    if (btnRight) btnRight.addEventListener('click', () => movePlayer('right'));
+
     let touchStartX = 0;
     let touchStartY = 0;
 
-    document.getElementById('game-board').addEventListener('touchstart', (e) => {
+    const gameBoard = document.getElementById('game-board');
+    if (!gameBoard) return;
+
+    gameBoard.addEventListener('touchstart', (e) => {
         touchStartX = e.touches[0].clientX;
         touchStartY = e.touches[0].clientY;
     });
 
-    document.getElementById('game-board').addEventListener('touchend', (e) => {
+    gameBoard.addEventListener('touchend', (e) => {
         const touchEndX = e.changedTouches[0].clientX;
         const touchEndY = e.changedTouches[0].clientY;
 
@@ -409,11 +424,9 @@ function addTouchControls() {
         const diffY = touchEndY - touchStartY;
 
         if (Math.abs(diffX) > Math.abs(diffY)) {
-
             if (diffX > 30) movePlayer('right');
             if (diffX < -30) movePlayer('left');
         } else {
-
             if (diffY > 30) movePlayer('down');
             if (diffY < -30) movePlayer('up');
         }
