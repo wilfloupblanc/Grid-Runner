@@ -14,6 +14,81 @@ let gameOver =false
 let gridElements = [];
 let bestScore = localStorage.getItem("gridRunnerBestScore") || 0;
 
+// 🔄 Système de mise à jour automatique
+if ('serviceWorker' in navigator) {
+    let refreshing = false;
+
+    navigator.serviceWorker.register('./sw.js').then(registration => {
+        console.log('✅ Service Worker enregistré');
+
+        // Vérifier les mises à jour toutes les 30 secondes
+        setInterval(() => {
+            registration.update();
+        }, 30000);
+
+        // Détecter quand une nouvelle version est disponible
+        registration.addEventListener('updatefound', () => {
+            const newWorker = registration.installing;
+
+            newWorker.addEventListener('statechange', () => {
+                if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                    // Nouvelle version disponible !
+                    console.log('🆕 Nouvelle version détectée');
+
+                    // Afficher une notification à l'utilisateur
+                    showUpdateNotification();
+                }
+            });
+        });
+    });
+
+    // Recharger la page quand le nouveau SW prend le contrôle
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+        if (!refreshing) {
+            refreshing = true;
+            window.location.reload();
+        }
+    });
+}
+
+// Fonction pour afficher une notification de mise à jour
+function showUpdateNotification() {
+    const notification = document.createElement('div');
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(123, 63, 242, 0.95);
+        color: white;
+        padding: 15px 25px;
+        border-radius: 10px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        z-index: 10000;
+        font-size: 1.4rem;
+        text-align: center;
+    `;
+    notification.innerHTML = `
+        ✨ Nouvelle version disponible !<br>
+        <button onclick="window.location.reload()" style="
+            margin-top: 10px;
+            padding: 8px 15px;
+            background: white;
+            color: #7B3FF2;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        ">Mettre à jour maintenant</button>
+    `;
+    document.body.appendChild(notification);
+
+    // Auto-refresh après 5 secondes si l'utilisateur ne clique pas
+    setTimeout(() => {
+        window.location.reload();
+    }, 5000);
+}
+
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     const inputName = document.querySelector("input[type='text']");

@@ -35,12 +35,5 @@
 </main>
 <script src="./grid.js"></script>
 <script type="module" src="./script.js"></script>
-<script>
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('./sw.js')
-            .then(() => console.log('Service Worker enregistré'))
-            .catch(err => console.log('Erreur SW:', err));
-    }
-</script>
 </body>
 </html>
