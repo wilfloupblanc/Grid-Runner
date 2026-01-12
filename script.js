@@ -83,10 +83,10 @@ function showUpdateNotification() {
     `;
     document.body.appendChild(notification);
 
-    // Auto-refresh après 5 secondes si l'utilisateur ne clique pas
+    // Auto-refresh après 30 secondes si l'utilisateur ne clique pas
     setTimeout(() => {
         window.location.reload();
-    }, 5000);
+    }, 30000);
 }
 
 form.addEventListener('submit', (e) => {
