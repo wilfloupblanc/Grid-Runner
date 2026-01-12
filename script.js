@@ -146,6 +146,8 @@ window.restartGame = restartGame;
 function createGameContainer() {
     const main = document.querySelector('main');
 
+    start.innerHTML = "";
+
     const gameContainer = document.createElement('div');
     gameContainer.classList.add('game-container');
     gameContainer.innerHTML = `

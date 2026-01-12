@@ -4,19 +4,22 @@
 @use "../main/variables" as *;
 
 main {
-    a {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-decoration: none;
-        font-size: 3rem;
-    }
+
 
     .start {
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         padding: 2rem;
+
+        a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 3rem;
+        }
 
         form {
             background: rgba(255, 255, 255, 0.15);
