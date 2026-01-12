@@ -56,7 +56,7 @@ function showTutorialModal(callback) {
             <div class="tutorial-section">
                 <h3>🎮 Contrôles</h3>
                 <p><strong>Sur ordinateur :</strong> Flèches du clavier ⬆️ ⬇️ ⬅️ ➡️</p>
-                <p><strong>Sur mobile :</strong> Utilisez les boutons directionnels ou swipez sur la grille</p>
+                <p><strong>Sur mobile :</strong> Utilisez les boutons directionnels</p>
             </div>
             
             <div class="tutorial-section">
@@ -153,28 +153,20 @@ function createGameContainer() {
         <h4 id="level-display">Niveau: ${currentLevel +1}</h4>
         <div id="game-board"></div>
         <div id="score">Score : 0 | Meilleur : ${bestScore}</div>
-        <div class="legend">
-            <h2>Légende:</h2>
-            <div class="legend-content">
-                <div class="legend-col">
-                    <p>👤 = Joueur</p>
-                    <p>🧱 = Mur</p>
-                    <p>🌟 = Point (+10)</p>
-                </div>
-                <div class="legend-col">
-                    <p>☠️ = Piège (Game Over)</p>
-                    <p>🏁 = Sortie (victoire)</p>
-                </div>
+        <div class="mobile-controls">
+            <button class="control-btn up" id="btn-up">⬆️</button>
+            <div class="horizontal-controls">
+                <button class="control-btn left" id="btn-left">⬅️</button>
+                <button class="control-btn down" id="btn-down">⬇️</button>
+                <button class="control-btn right" id="btn-right">➡️</button>
             </div>
         </div>
     `;
 
     main.appendChild(gameContainer);
-
-    createMobileControls();
 }
 
-function createMobileControls() {
+/*function createMobileControls() {
     const controls = document.createElement('div');
     controls.classList.add('mobile-controls');
     controls.innerHTML = `
@@ -186,7 +178,7 @@ function createMobileControls() {
         </div>
     `;
     document.body.appendChild(controls);
-}
+}*/
 
 function displayGrid() {
     let gameBoard = document.getElementById("game-board");

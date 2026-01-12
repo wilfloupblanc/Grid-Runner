@@ -192,63 +192,49 @@ main {
             background: url(../../images/mur.jpeg) no-repeat; background-size: cover;
         }
 
-        .legend {
-            margin-top: 2rem;
-            text-align: left;
-            color: white;
-
-            .legend-content {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 1rem;
-            }
-
-            h2 {
-                margin-bottom: 1rem;
-            }
-
-            p {
-                margin: 0.5rem 0;
-            }
-        }
-    }
-
-    .mobile-controls {
-        display: flex;
-        position: fixed;
-        bottom: 2rem;
-        right: 2rem;
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-        z-index: 999;
-
-
-        @include desktop {
-            display: none;
-        }
-
-        .control-btn {
-            width: 6rem;
-            height: 6rem;
-            font-size: 3rem;
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 1rem;
-            color: white;
-            cursor: pointer;
-            transition: all 0.2s;
-
-            &:active {
-                transform: scale(0.9);
-                background: rgba(123, 63, 242, 0.5);
-            }
-        }
-
-        .horizontal-controls {
+        .mobile-controls {
             display: flex;
-            gap: 1rem;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+
+            @include desktop {
+                display: none;
+            }
+
+            .control-btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 6rem;
+                height: 6rem;
+                font-size: 3rem;
+                background: rgba(123, 63, 242, 0.3);
+                backdrop-filter: blur(10px);
+                border: 3px solid rgba(123, 63, 242, 0.5);
+                border-radius: 1.5rem;
+                color: white;
+                cursor: pointer;
+                transition: all 0.2s;
+                box-shadow: 0 4px 15px rgba(123, 63, 242, 0.4);
+
+                &:active {
+                    transform: scale(0.9);
+                    background: rgba(123, 63, 242, 0.7);
+                    box-shadow: 0 2px 10px rgba(123, 63, 242, 0.6);
+                }
+
+                &:hover {
+                    background: rgba(123, 63, 242, 0.5);
+                    border-color: rgba(123, 63, 242, 0.8);
+                }
+            }
+
+            .horizontal-controls {
+                display: flex;
+                gap: 1.5rem;
+            }
         }
     }
 }
