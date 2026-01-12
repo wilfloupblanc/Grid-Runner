@@ -19,6 +19,13 @@ main {
             justify-content: center;
             text-decoration: none;
             font-size: 3rem;
+
+            h1 {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+            }
         }
 
         form {
