@@ -1,4 +1,4 @@
-const CACHE_NAME = 'grid-runner-v1.1.3';
+const CACHE_NAME = 'grid-runner-v1.2';
 const urlsToCache = [
     './',
     './index.html',

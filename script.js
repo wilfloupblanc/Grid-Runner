@@ -82,11 +82,6 @@ function showUpdateNotification() {
         ">Mettre à jour maintenant</button>
     `;
     document.body.appendChild(notification);
-
-    // Auto-refresh après 30 secondes si l'utilisateur ne clique pas
-    setTimeout(() => {
-        window.location.reload();
-    }, 300000);
 }
 
 form.addEventListener('submit', (e) => {
