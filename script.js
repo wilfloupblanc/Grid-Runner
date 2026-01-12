@@ -86,7 +86,7 @@ function showUpdateNotification() {
     // Auto-refresh après 30 secondes si l'utilisateur ne clique pas
     setTimeout(() => {
         window.location.reload();
-    }, 30000);
+    }, 300000);
 }
 
 form.addEventListener('submit', (e) => {
