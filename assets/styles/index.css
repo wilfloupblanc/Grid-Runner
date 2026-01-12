@@ -299,25 +299,25 @@ body .new-record {
   border-radius: 1rem;
 }
 
-main .start {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem;
-}
-main .start a {
+main a {
   display: flex;
   align-items: center;
   justify-content: center;
   text-decoration: none;
   font-size: 3rem;
 }
-main .start a h1 {
+main a h1 {
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
+}
+main .start {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
 }
 main .start form {
   background: rgba(255, 255, 255, 0.15);

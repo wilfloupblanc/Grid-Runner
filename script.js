@@ -146,8 +146,6 @@ window.restartGame = restartGame;
 function createGameContainer() {
     const main = document.querySelector('main');
 
-    start.innerHTML = "";
-
     const gameContainer = document.createElement('div');
     gameContainer.classList.add('game-container');
     gameContainer.innerHTML = `
@@ -167,20 +165,6 @@ function createGameContainer() {
 
     main.appendChild(gameContainer);
 }
-
-/*function createMobileControls() {
-    const controls = document.createElement('div');
-    controls.classList.add('mobile-controls');
-    controls.innerHTML = `
-        <button class="control-btn up" id="btn-up">⬆️</button>
-        <div class="horizontal-controls">
-            <button class="control-btn left" id="btn-left">⬅️</button>
-            <button class="control-btn down" id="btn-down">⬇️</button>
-            <button class="control-btn right" id="btn-right">➡️</button>
-        </div>
-    `;
-    document.body.appendChild(controls);
-}*/
 
 function displayGrid() {
     let gameBoard = document.getElementById("game-board");
